@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPaperCreator", "TestPaperCreator\TestPaperCreator.csproj", "{992F7A16-2764-4293-93AB-B7CC681A74EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPaperCreator.BLL", "TestPaperCreator.BLL\TestPaperCreator.BLL.csproj", "{A1657D89-5E52-4287-9174-ACE7956023F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPaperCreator.DAL", "TestPaperCreator.DAL\TestPaperCreator.DAL.csproj", "{FEFA55EA-7E52-4DF8-8C4E-FC75ED9E0839}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPaperCreator.MODEL", "TestPaperCreator.MODEL\TestPaperCreator.MODEL.csproj", "{30B2151A-CD25-4722-84FB-2463E6B8C4CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{992F7A16-2764-4293-93AB-B7CC681A74EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992F7A16-2764-4293-93AB-B7CC681A74EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992F7A16-2764-4293-93AB-B7CC681A74EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992F7A16-2764-4293-93AB-B7CC681A74EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1657D89-5E52-4287-9174-ACE7956023F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1657D89-5E52-4287-9174-ACE7956023F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1657D89-5E52-4287-9174-ACE7956023F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1657D89-5E52-4287-9174-ACE7956023F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEFA55EA-7E52-4DF8-8C4E-FC75ED9E0839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEFA55EA-7E52-4DF8-8C4E-FC75ED9E0839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEFA55EA-7E52-4DF8-8C4E-FC75ED9E0839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEFA55EA-7E52-4DF8-8C4E-FC75ED9E0839}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B2151A-CD25-4722-84FB-2463E6B8C4CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B2151A-CD25-4722-84FB-2463E6B8C4CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B2151A-CD25-4722-84FB-2463E6B8C4CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B2151A-CD25-4722-84FB-2463E6B8C4CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://liaoyulei.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = TestPaperCreator.BLL\\TestPaperCreator.BLL.csproj
+		SccProjectName1 = TestPaperCreator.BLL
+		SccLocalPath1 = TestPaperCreator.BLL
+		SccProjectUniqueName2 = TestPaperCreator.DAL\\TestPaperCreator.DAL.csproj
+		SccProjectName2 = TestPaperCreator.DAL
+		SccLocalPath2 = TestPaperCreator.DAL
+		SccProjectUniqueName3 = TestPaperCreator\\TestPaperCreator.csproj
+		SccProjectName3 = TestPaperCreator
+		SccLocalPath3 = TestPaperCreator
+		SccProjectUniqueName4 = TestPaperCreator.MODEL\\TestPaperCreator.MODEL.csproj
+		SccProjectName4 = TestPaperCreator.MODEL
+		SccLocalPath4 = TestPaperCreator.MODEL
+	EndGlobalSection
+EndGlobal
