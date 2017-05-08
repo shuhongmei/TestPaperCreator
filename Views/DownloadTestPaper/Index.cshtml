@@ -1,0 +1,178 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    
+</style>
+<h1>下载试题</h1>
+<div class="panel panel-primary">
+    <div class="panel-heading">请选择试题</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2 form-group">
+                <select id="course" class="form-control">
+                    <option selected="selected" value="0">选择课程</option>
+                    @foreach (var i in ViewBag.CourseList)
+            {
+                        <option value="@i.id">@i.value</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 form-group">
+                <select id="questiontype" class="form-control">
+                    <option selected value="0">选择题型</option>
+                    @foreach (var i in ViewBag.QuestionTypeList)
+            {
+                        <option value="@i.id">@i.value</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 form-group">
+                <select id="section" class="form-control">
+                    <option value="0">选择章节</option>
+                    @foreach (var i in ViewBag.SectionList)
+            {
+                        <option value="@i.id">@i.value</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 form-group">
+                <select id="difficulty" class="form-control">
+                    <option value="0">选择难易度</option>
+                    @foreach (var i in ViewBag.DifficultyList)
+            {
+                        <option value="@i.id">@i.value</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-2 form-group">
+                <input class="form-control" id="count" onkeyup="this.value = this.value.replace(/\D/g, '')" placeholder="请输入题量" />
+            </div>
+            <div class="col-md-2 form-group">
+                <button id="AddOn" onclick="Add()" class="btn btn-primary" type="button">添加</button>
+            </div>
+            
+        </div>
+        <div id="warning" hidden="hidden" class="alert alert-danger" role="alert"></div> 
+    </div>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">已选择试题</div>
+    <div style="color:black" class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>课程</th>
+                    <th>题型</th>
+                    <th>章节</th>
+                    <th>难度</th>
+                    <th>数量</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="Content">
+            </tbody>
+        </table>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-sm btn-success">生成</button>
+        <label id="total_count" style="color:black">总数：0</label>
+    </div>
+</div>
+<script type="text/javascript">
+    function Add()
+    {
+        var course = $("#course").find("option:selected").val()
+        var coursename = $("#course").find("option:selected").text()
+        var questiontype = $("#questiontype").find("option:selected").val()
+        var questiontypename = $("#questiontype").find("option:selected").text()
+        var section = $("#section").find("option:selected").val()
+        var sectionname = $("#section").find("option:selected").text()
+        var difficulty = $("#difficulty").find("option:selected").val()
+        var difficultyname = $("#difficulty").find("option:selected").text()
+        var count = $("#count").val()
+        var warningword = ""
+        var flag = true
+        if(course == 0)
+        {
+            $("#course").parent().attr("class", "col-md-2 form-group has-error")
+            warningword += "【课程】"
+            flag = false
+        }
+        else
+        {
+            $("#course").parent().attr("class", "col-md-2 form-group")
+        }
+        if (questiontype == 0) {
+            $("#questiontype").parent().attr("class", "col-md-2 form-group has-error")
+            warningword += "【题型】"
+            flag = false
+        }
+        else
+        {
+            $("#questiontype").parent().attr("class", "col-md-2 form-group")
+        }
+        if (section == 0)
+        {
+            console.log("hello")
+            $("#section").parent().attr("class", "col-md-2 form-group has-error")
+            warningword += "【章节】"
+            flag = false
+        }
+        else
+        {
+            $("#section").parent().attr("class", "col-md-2 form-group")
+        }
+        if (difficulty == 0)
+        {
+            $("#difficulty").parent().attr("class", "col-md-2 form-group has-error")
+            warningword += "【难度】"
+            flag = false
+        }
+        else
+        {
+            $("#difficulty").parent().attr("class", "col-md-2 form-group")
+        }
+        if (count == "" || count == 0)
+        {
+            $("#count").parent().attr("class", "col-md-2 form-group has-error")
+            warningword += "【题量】"
+            flag = false
+        }
+        else
+        {
+            $("#count").parent().attr("class", "col-md-2 form-group")
+        }
+        if (flag == false)
+        {
+            alert(count)
+            $("#warning").html(warningword + "有错误")
+            $("#warning").removeAttr("hidden")
+            return
+        }
+        else
+        {
+            $("#warning").html("")
+            $("#warning").attr("hidden", "hidden")
+        }
+        var html = $("#Content").html();
+        html += '<tr>' +
+                    '<td>' + coursename + '</td>' +
+                    '<td>' + questiontypename + '</td>' +
+                    '<td>' + sectionname + '</td>' +
+                    '<td>' + difficultyname + '</td>' +
+                    '<td>' + count + '</td>' +
+                    '<td><button id="Del" onclick="Del(this)" class="btn btn-warning" type="button">删除</button></td>' +
+                '</tr>'
+        $("#Content").html(html)
+        var total_count = $("#total_count").text().split("：")[1]
+        total_count = parseInt(total_count) + parseInt(count)
+        $("#total_count").text("总数：" + total_count)
+    }
+    function Del(obj)
+    {
+        $(obj).parent().parent().remove()
+    }
+</script>

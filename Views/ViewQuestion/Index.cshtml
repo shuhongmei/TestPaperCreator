@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>试题管理</h1>
+@*@foreach(var i in ViewBag.questionlist)
+{
+    <div>@i.ID , @i.Type , @i.Course , @i.Section , @i.Difficulty </div>
+    <br />
+}*@
+<style>
+    td,th{
+        color:black;
+    }
+</style>
+<div class="panel panel-primary">
+    <div class="panel-heading">试题管理</div>
+    <div class="panel-body" style="color:black">
+        <table id="table_local" class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>题型</th>
+                    <th>科目</th>
+                    <th>章节</th>
+                    <th>难度</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            
+            @if (ViewBag.questionlist.Count > 0)
+            {
+                <tbody>
+                    @foreach (var i in ViewBag.questionlist)
+                    {
+                        <tr>
+                            <td style="text-align:center;vertical-align:middle" onclick="hello(this)">
+                                <a style="margin:auto"><span style="" status="close" class="glyphicon glyphicon-plus"></span></a>
+                            </td>
+                            <td id="@i.ID _@i.Type">@i.TypeName</td>
+                            <td id="@i.ID _@i.Course">@i.CourseName</td>
+                            <td id="@i.ID _@i.Section">@i.SectionName</td>
+                            <td id="@i.ID _@i.Difficulty">@i.DifficultyName</td>
+                            <td><button class="btn btn-sm btn-danger" onclick="Del(this)">删除</button></td>
+                        </tr>
+                        <tr hidden="hidden"><td colspan="6">@i.Content</td></tr>
+                    }
+                </tbody>
+            }
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#table_local").dataTable({
+            bAutoWidth: true,                   //是否启用自动适应列宽
+            paging: true,//分页
+            ordering: true,//是否启用排序
+            searching: true,//搜索
+            language: {
+                lengthMenu: '<select class="form-control input-md">' + '<option value="1">1</option>' + '<option value="10">10</option>' + '<option value="20">20</option>' + '<option value="30">30</option>' + '<option value="40">40</option>' + '<option value="50">50</option>' + '</select>条记录',//左上角的分页大小显示。
+                search: '<span style="color:black">搜索：</span>',//右上角的搜索文本，可以写html标签
+                paginate: {//分页的样式内容。
+                    previous: "上一页",
+                    next: "下一页",
+                    first: "第一页",
+                    last: "最后"
+                },
+                zeroRecords: "没有内容",//table tbody内容为空时，tbody的内容。
+                //下面三者构成了总体的左下角的内容。
+                info: "总共_PAGES_ 页，显示第_START_ 到第 _END_ ，筛选之后得到 _TOTAL_ 条，初始_MAX_ 条 ",//左下角的信息显示，大写的词为关键字。
+                infoEmpty: "0条记录",//筛选为空时左下角的显示。
+                infoFiltered: ""//筛选之后的左下角筛选提示，
+            },
+            paging: true,
+            pagingType: "full_numbers",//分页样式的类型
+        });
+        $("#table_local_filter input[type=search]").css({ width: "auto" });//右上角的默认搜索文本框，不写这个就超出去了。
+    });
+    function Del(obj)
+    {
+        $(obj).parent().parent().remove()
+    }
+    function hello(obj)
+    {
+        //alert($(obj).children("a").eq(0).children("span").attr("class"))
+        if ($(obj).children("a").eq(0).children("span").attr("class") == "glyphicon glyphicon-plus")
+        {
+            $(obj).children("a").eq(0).children("span").attr("class", "glyphicon glyphicon-minus")
+            $(obj).parents("tr").eq(0).next("tr").removeAttr("hidden")
+        }
+        else
+        {
+            $(obj).children("a").eq(0).children("span").attr("class", "glyphicon glyphicon-plus")
+            $(obj).parents("tr").eq(0).next("tr").attr("hidden","hidden")
+        }
+        
+    }
+
+</script>
